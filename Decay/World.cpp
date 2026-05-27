@@ -77,7 +77,7 @@ void World::bootUp(Sprites& sprites, Event& notevent, Combat& combat, Player& pl
                     }
 
                     //Menu Bar Functionality
-                    this->menuBar(window, sprites);
+                    this->menuBar(window, sprites, player);
 
                     //Dialogue Box Functionality
                     this->dialogueCombatBox(window, combat, sprites, travel, notevent);
@@ -656,7 +656,7 @@ void World::travelButtons(sf::RenderWindow& window, Sprites& sprites, Travel& tr
     }
 }
 
-void World::menuBar(sf::RenderWindow& window, Sprites& sprites)
+void World::menuBar(sf::RenderWindow& window, Sprites& sprites, Player& player)
 {
     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
     sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
@@ -683,6 +683,7 @@ void World::menuBar(sf::RenderWindow& window, Sprites& sprites)
     if (sprites.rectElements[0].getGlobalBounds().contains(mousePosF) && sprites.getInitStats() == false) {
         sprites.setInitStatsTrue();
         sprites.setPlayerStatsInitTrue();
+        player.statsText(sprites);
         sprites.blipmenu.play();
     }
     else if (sprites.rectElements[0].getGlobalBounds().contains(mousePosF) && sprites.getInitStats() == true) {
@@ -695,6 +696,7 @@ void World::menuBar(sf::RenderWindow& window, Sprites& sprites)
     //Inventory Menu Bar Functionality
     if (sprites.rectElements[1].getGlobalBounds().contains(mousePosF) && sprites.getInitInventory() == false) {
         sprites.setInitInventoryTrue();
+        player.printInventory(sprites);
         sprites.blipmenu.play();
     }
     else if (sprites.rectElements[1].getGlobalBounds().contains(mousePosF) && sprites.getInitInventory() == true) {

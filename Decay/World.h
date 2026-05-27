@@ -77,7 +77,7 @@ public:
 	void mainMenuButtons(sf::RenderWindow& window, Sprites& sprites, Event& notevent, 
 		Combat& combat, Player& player, Travel& travel, Animation& animate);
 	void travelButtons(sf::RenderWindow& window, Sprites& sprites, Travel& travel, Animation& animate, Player& player);
-	void menuBar(sf::RenderWindow& window, Sprites& sprites);
+	void menuBar(sf::RenderWindow& window, Sprites& sprites, Player& player);
 	void dialogueCombatBox(sf::RenderWindow& window, Combat& combat, Sprites& sprites, Travel& travel, Event& notevent);
 	void movableBox(sf::RenderWindow& window, Sprites& sprites);
 
